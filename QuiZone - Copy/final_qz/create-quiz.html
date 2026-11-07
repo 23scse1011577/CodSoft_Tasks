@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Quiz | QuiZone</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="images/quizone-logo.png">
+    <link rel="stylesheet" href="css/app-theme.css">
+
+</head>
+
+<body>
+
+<header class="site-header">
+    <nav class="site-navbar">
+        <a href="index.html" class="brand-logo" aria-label="QuiZone home">
+            <img src="images/quizone-logo.png" alt="QuiZone">
+        </a>
+        <div class="site-nav-links">
+            <a href="index.html">Home</a>
+            <a href="quizzes.html">Explore Quizzes</a>
+            <a href="create-quiz.html">Create Quiz</a>
+            <a href="progress.html">My Progress</a>
+        </div>
+    </nav>
+</header>
+
+    <main class="create-quiz-container">
+
+        <h2>Create a New Quiz</h2>
+
+        <form id="quizForm">
+
+            <label>Quiz Title</label>
+            <input type="text" id="quizTitle"
+                placeholder="Enter quiz title" required>
+                <label>Quiz Category</label>
+                <select id="quizCategory" required>
+                  <option value="">Select Category</option>
+                  <option value="Programming">Programming</option>
+                  <option value="General Knowledge">General Knowledge</option>
+                  <option value="Science">Science</option>
+                  <option value="Other">Other</option>
+                </select>
+
+            <label>Quiz Description</label>
+            <textarea id="quizDescription"
+                placeholder="Enter quiz description"></textarea>
+
+            <div id="questionsContainer"></div>
+
+            <button type="button" id="addQuestion">
+                + Add Question
+            </button>
+
+            <button type="submit">
+                Create Quiz
+            </button>
+
+            <p id="quizMessage"></p>
+
+        </form>
+
+    </main>
+
+    <script src="js/quiz.js"></script>
+
+</body>
+</html>

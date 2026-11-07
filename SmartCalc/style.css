@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  }
+
+body {
+min-height: 100vh;
+display: flex;
+justify-content: center;
+align-items: center;
+padding: 25px;
+font-family: 'Inter', sans-serif;
+background: radial-gradient(circle at top left, #6532d9, transparent 35%),
+linear-gradient(135deg, #100c25, #21104c, #0c0b1c);
+color: white;
+}
+
+/* CALCULATOR CONTAINER */
+
+.calculator {
+width: 100%;
+max-width: 430px;
+padding: 28px;
+border: 1px solid rgba(160, 105, 255, 0.6);
+border-radius: 28px;
+background: rgba(13, 12, 31, 0.96);
+box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
+0 0 30px rgba(126, 65, 255, 0.15);
+}
+
+/* HEADER */
+
+.calculator-header {
+text-align: center;
+margin-bottom: 25px;
+}
+
+.calculator-header h1 {
+font-size: 35px;
+font-weight: 800;
+letter-spacing: -1.5px;
+}
+
+.calculator-header h1 span {
+color: #a56aff;
+}
+
+.calculator-header p {
+margin-top: 8px;
+font-size: 12px;
+color: #c4b7e8;
+letter-spacing: 0.5px;
+}
+
+/* DISPLAY */
+
+.display {
+min-height: 125px;
+padding: 20px;
+margin-bottom: 22px;
+border: 1px solid #7041c9;
+border-radius: 18px;
+background: linear-gradient(145deg, #1d1a35, #0c0b1b);
+display: flex;
+flex-direction: column;
+justify-content: flex-end;
+align-items: flex-end;
+overflow: hidden;
+}
+
+#previousOperand {
+min-height: 25px;
+color: #aaa0c8;
+font-size: 18px;
+margin-bottom: 8px;
+}
+
+#currentOperand {
+width: 100%;
+text-align: right;
+font-size: 38px;
+font-weight: 600;
+overflow-wrap: anywhere;
+}
+
+/* BUTTON GRID */
+
+.buttons {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 12px;
+}
+
+.buttons button {
+min-height: 65px;
+border: 1px solid rgba(255, 255, 255, 0.08);
+border-radius: 16px;
+background: linear-gradient(145deg, #302d43, #211f32);
+color: white;
+font-family: inherit;
+font-size: 21px;
+font-weight: 600;
+cursor: pointer;
+transition: 0.2s ease;
+}
+
+.buttons button:hover {
+transform: translateY(-3px);
+background: #40375e;
+box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.buttons button:active {
+transform: scale(0.94);
+}
+
+/* SPECIAL BUTTONS */
+
+.buttons .special {
+background: linear-gradient(135deg, #9858f5, #6232d8);
+}
+
+.buttons .operator {
+background: linear-gradient(135deg, #8146e9, #5525bd);
+font-size: 25px;
+}
+
+.buttons .equal {
+background: linear-gradient(135deg, #bd4df5, #642cf0);
+font-size: 26px;
+}
+
+/* FOOTER */
+
+.calculator-footer {
+margin-top: 23px;
+text-align: center;
+color: #aaa0c8;
+font-size: 11px;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 480px) {
+body {
+padding: 15px;
+}
+
+
+.calculator {
+    padding: 20px;
+}
+
+.calculator-header h1 {
+    font-size: 30px;
+}
+
+.buttons {
+    gap: 9px;
+}
+
+.buttons button {
+    min-height: 58px;
+    border-radius: 13px;
+    font-size: 19px;
+}
+
+#currentOperand {
+    font-size: 32px;
+}
+
+
+}
+
+/* CALCULATION HISTORY */
+
+.history-section {
+    margin-bottom: 22px;
+    padding: 15px;
+    border: 1px solid rgba(165, 106, 255, 0.25);
+    border-radius: 16px;
+    background: #17142b;
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.history-header h3 {
+    font-size: 14px;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.history-header button {
+    border: none;
+    background: transparent;
+    color: #ad7aff;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.history-header button:hover {
+    color: #ffffff;
+}
+
+#historyList {
+    list-style: none;
+    max-height: 120px;
+    overflow-y: auto;
+}
+
+#historyList li {
+    padding: 9px 5px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    color: #c8bddf;
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+#historyList li:last-child {
+    border-bottom: none;
+}
+
+#historyList .empty-history {
+    color: #817895;
+    justify-content: center;
+    border: none;
+}

@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>QuiZone | Online Quiz Maker</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="images/quizone-logo.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Feature Cards and Results Popup Styling -->
+    <style>
+        /* Feature Cards */
+
+        .features-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            max-width: 1250px;
+            margin: 50px auto 0;
+        }
+
+        .feature-card {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            min-height: 340px;
+            padding: 32px;
+            border-radius: 22px;
+            border: 1px solid #e9e5ff;
+            text-decoration: none;
+            color: #202044;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 18px 40px rgba(89, 60, 190, 0.15);
+        }
+
+        .create-card {
+            background: linear-gradient(145deg, #f1eaff, #ffffff);
+            border-top: 5px solid #7547ed;
+        }
+
+        .take-card {
+            background: linear-gradient(145deg, #eaf3ff, #ffffff);
+            border-top: 5px solid #3985e9;
+        }
+
+        .results-card {
+            background: linear-gradient(145deg, #fff1e5, #ffffff);
+            border-top: 5px solid #ff9c42;
+        }
+
+        .feature-top {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .feature-number {
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: #a5a0bd;
+        }
+
+        .feature-icon {
+            width: 72px;
+            height: 72px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 38px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 5px 15px rgba(50, 40, 100, 0.08);
+        }
+
+        .feature-card h3 {
+            font-size: 23px;
+            font-weight: 800;
+            margin-bottom: 14px;
+            color: #202044;
+        }
+
+        .feature-card p {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #77758f;
+            margin-bottom: 25px;
+        }
+
+        .feature-action {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: auto;
+            padding: 13px 20px;
+            border: none;
+            border-radius: 10px;
+            background: #7045e8;
+            color: white;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            font-family: inherit;
+            transition: 0.3s;
+        }
+
+        .feature-action:hover {
+            background: #5630c7;
+            gap: 18px;
+        }
+
+        .take-card .feature-action {
+            background: #3985e9;
+        }
+
+        .take-card .feature-action:hover {
+            background: #216acb;
+        }
+
+        .results-card .feature-action {
+            background: #f28b35;
+        }
+
+        .results-card .feature-action:hover {
+            background: #df701c;
+        }
+
+
+        /* Instant Results Popup */
+
+        .results-modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            inset: 0;
+            background: rgba(20, 18, 45, 0.65);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .results-modal.show {
+            display: flex;
+        }
+
+        .results-modal-content {
+            position: relative;
+            width: 100%;
+            max-width: 440px;
+            padding: 40px 30px;
+            background: white;
+            border-radius: 22px;
+            text-align: center;
+            animation: modalAppear 0.3s ease;
+        }
+
+        @keyframes modalAppear {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 12px;
+            right: 18px;
+            border: none;
+            background: none;
+            font-size: 30px;
+            cursor: pointer;
+            color: #777;
+        }
+
+        .modal-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .results-modal-content h2 {
+            color: #252044;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .results-modal-content > p {
+            color: #85829a;
+            margin-bottom: 25px;
+        }
+
+        .result-step {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-align: left;
+            margin: 15px 0;
+        }
+
+        .result-step span {
+            min-width: 32px;
+            height: 32px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #eee8ff;
+            color: #7045e8;
+            border-radius: 50%;
+            font-weight: 800;
+        }
+
+        .result-step p {
+            color: #55536e;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .modal-button {
+            display: inline-block;
+            margin-top: 22px;
+            padding: 13px 25px;
+            background: #7045e8;
+            color: white;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .modal-button:hover {
+            background: #5630c7;
+        }
+
+
+        /* Responsive Design */
+
+        @media (max-width: 900px) {
+            .features-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .features-container {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-card {
+                min-height: auto;
+            }
+        }
+    </style>
+
+    <link rel="stylesheet" href="css/app-theme.css">
+
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <nav class="navbar">
+
+            <a href="index.html" class="logo brand-logo" aria-label="QuiZone home">
+                <img src="images/quizone-logo.png" alt="QuiZone">
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="quizzes.html">Explore Quizzes</a></li>
+            </ul>
+
+            <div class="nav-buttons">
+                <a href="login.html" class="login-btn">Login</a>
+                <a href="register.html" class="signup-btn">Get Started</a>
+            </div>
+
+        </nav>
+    </header>
+
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <span class="hero-tagline">LEARN • PLAY • IMPROVE</span>
+
+            <h1>
+                Challenge Your Mind.<br>
+                Test Your Knowledge.
+            </h1>
+
+            <p>
+                Create exciting quizzes, challenge yourself, and discover
+                how much you really know.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="quizzes.html" class="primary-btn">Explore Quizzes</a>
+                <a href="create-quiz.html" class="secondary-btn">Create a Quiz</a>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Features Section -->
+    <section class="features-section" id="features">
+
+        <div class="section-heading">
+
+            <span class="section-label">WHAT YOU CAN DO</span>
+
+            <h2>Make Learning More Exciting</h2>
+
+            <p>Everything you need to create, play, and learn.</p>
+
+        </div>
+
+
+        <div class="features-container">
+
+            <!-- Create Quizzes -->
+            <div class="feature-card create-card">
+
+                <div class="feature-top">
+                    <span class="feature-number">01 / CREATE</span>
+                    <div class="feature-icon">✏️</div>
+                </div>
+
+                <h3>Create Quizzes</h3>
+
+                <p>
+                    Bring your ideas to life! Create your own quizzes
+                    with questions, multiple-choice options, and answers.
+                </p>
+
+                <a href="create-quiz.html" class="feature-action">
+                    Create Your Quiz <span>→</span>
+                </a>
+
+            </div>
+
+
+            <!-- Take Quizzes -->
+            <div class="feature-card take-card">
+
+                <div class="feature-top">
+                    <span class="feature-number">02 / PLAY</span>
+                    <div class="feature-icon">🧠</div>
+                </div>
+
+                <h3>Take Quizzes</h3>
+
+                <p>
+                    Explore exciting quizzes, challenge yourself,
+                    and test your knowledge across different topics.
+                </p>
+
+                <a href="quizzes.html" class="feature-action">
+                    Start a Challenge <span>→</span>
+                </a>
+
+            </div>
+
+
+            <!-- Instant Results -->
+            <div class="feature-card results-card">
+
+                <div class="feature-top">
+                    <span class="feature-number">03 / RESULTS</span>
+                    <div class="feature-icon">⚡</div>
+                </div>
+
+                <h3>Instant Results</h3>
+
+                <p>
+                    No waiting! Get your score immediately after
+                    submission and review the correct answers.
+                </p>
+
+                <button type="button" class="feature-action"
+                    onclick="showResultsInfo()">
+                    Discover More <span>→</span>
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Instant Results Popup -->
+    <div class="results-modal" id="resultsModal">
+
+        <div class="results-modal-content">
+
+            <button type="button" class="close-modal"
+                onclick="closeResultsInfo()">×</button>
+
+            <div class="modal-icon">⚡</div>
+
+            <h2>Your Results, Instantly!</h2>
+
+            <p>Here's how it works:</p>
+
+            <div class="result-step">
+                <span>1</span>
+                <p>Choose and complete any available quiz.</p>
+            </div>
+
+            <div class="result-step">
+                <span>2</span>
+                <p>Submit your answers when you're finished.</p>
+            </div>
+
+            <div class="result-step">
+                <span>3</span>
+                <p>See your score and correct answers immediately.</p>
+            </div>
+
+            <a href="quizzes.html" class="modal-button">
+                Take a Quiz Now →
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- Explore Categories Section -->
+    <section class="quiz-section">
+
+        <div class="section-heading">
+
+            <span class="section-label">EXPLORE AND LEARN</span>
+
+            <h2>Discover Quiz Categories</h2>
+
+            <p>Choose a topic and put your knowledge to the test.</p>
+
+        </div>
+
+
+        <div class="quiz-container">
+
+            <a href="quizzes.html?category=Programming" class="quiz-category">
+
+                <div class="category-icon">💻</div>
+
+                <h3>Programming</h3>
+
+                <p>Test your coding knowledge.</p>
+
+            </a>
+
+
+            <a href="quizzes.html?category=General%20Knowledge" class="quiz-category">
+
+                <div class="category-icon">🌍</div>
+
+                <h3>General Knowledge</h3>
+
+                <p>Explore what you know about the world.</p>
+
+            </a>
+
+
+            <a href="quizzes.html?category=Science" class="quiz-category">
+
+                <div class="category-icon">🔬</div>
+
+                <h3>Science</h3>
+
+                <p>Discover and learn something new.</p>
+
+            </a>
+
+        </div>
+
+
+        <div class="explore-button">
+
+            <a href="quizzes.html" class="primary-btn">
+                View All Quizzes →
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- Call To Action Section -->
+    <section class="cta-section">
+
+        <div class="cta-content">
+
+            <h2>Ready to Challenge Yourself?</h2>
+
+            <p>
+                Start your learning journey with QuiZOne.
+                Create quizzes or take a challenge today!
+            </p>
+
+            <div class="cta-buttons">
+
+                <a href="register.html" class="cta-btn">
+                    Join QuiZOne
+                </a>
+
+                <a href="quizzes.html" class="cta-outline-btn">
+                    Explore Quizzes
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <div class="footer-content">
+
+            <a href="index.html" class="footer-logo">
+                Qui<span class="logo-z">Z</span><span class="logo-one">ONE</span>
+            </a>
+
+            <p>Learn • Play • Improve</p>
+
+            <p class="copyright">
+                © 2026 QuiZOne. All Rights Reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+
+    <script>
+
+        // Open Instant Results Popup
+        function showResultsInfo() {
+
+            document.getElementById("resultsModal").classList.add("show");
+
+        }
+
+
+        // Close Instant Results Popup
+        function closeResultsInfo() {
+
+            document.getElementById("resultsModal").classList.remove("show");
+
+        }
+
+
+        // Close popup when clicking outside
+        window.addEventListener("click", function (event) {
+
+            const modal = document.getElementById("resultsModal");
+
+            if (event.target === modal) {
+                closeResultsInfo();
+            }
+
+        });
+
+
+        // Close popup with Escape key
+        window.addEventListener("keydown", function (event) {
+
+            if (event.key === "Escape") {
+                closeResultsInfo();
+            }
+
+        });
+
+    </script>
+
+</body>
+
+</html>

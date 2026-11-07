@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Take Quiz | QuiZone</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="images/quizone-logo.png">
+    <link rel="stylesheet" href="css/app-theme.css">
+
+</head>
+<body>
+<header class="site-header">
+    <nav class="site-navbar">
+        <a href="index.html" class="brand-logo" aria-label="QuiZone home">
+            <img src="images/quizone-logo.png" alt="QuiZone">
+        </a>
+        <div class="site-nav-links">
+            <a href="index.html">Home</a>
+            <a href="quizzes.html">Explore Quizzes</a>
+            <a href="create-quiz.html">Create Quiz</a>
+            <a href="progress.html">My Progress</a>
+        </div>
+    </nav>
+</header>
+    <main class="create-quiz-container">
+        <h2 id="quizTitle">Loading Quiz...</h2>
+        <p id="quizDescription"></p>
+
+        <form id="takeQuizForm">
+            <div id="questionsArea"></div>
+            <button type="submit">Submit Quiz</button>
+        </form>
+
+        <div id="resultArea"></div>
+    </main>
+
+    <script src="js/take-quiz.js"></script>
+</body>
+</html>

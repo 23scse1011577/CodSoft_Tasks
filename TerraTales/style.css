@@ -1,0 +1,972 @@
+/* Google Font */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background-color: #f8f6ef;
+}
+
+
+/* NAVIGATION BAR */
+
+header {
+    width: 100%;
+    background-color: #10332d;
+    padding: 18px 5%;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+/* LOGO */
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -1px;
+    cursor: pointer;
+}
+
+.logo-accent {
+    color: #e9b957;
+}
+
+
+/* NAVIGATION LINKS */
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 35px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #e9b957;
+}
+
+
+/* PLAN YOUR TRIP BUTTON */
+
+.nav-btn {
+    text-decoration: none;
+    background-color: #e9b957;
+    color: #17342e;
+    padding: 13px 24px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 700;
+    transition: 0.3s ease;
+}
+
+.nav-btn:hover {
+    background-color: #ffffff;
+    transform: translateY(-3px);
+}
+
+/* =========================
+   HERO SECTION
+========================= */
+
+.hero {
+    min-height: 88vh;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    padding: 80px 8%;
+
+    position: relative;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(5, 30, 25, 0.90),
+            rgba(5, 30, 25, 0.55),
+            rgba(5, 30, 25, 0.10)
+        ),
+        url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=2000&q=85');
+
+    background-size: cover;
+    background-position: center;
+}
+
+
+/* HERO CONTENT */
+
+.hero-content {
+    max-width: 750px;
+    color: white;
+}
+
+
+/* SMALL TAGLINE */
+
+.hero-tagline {
+    color: #e9b957;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 25px;
+}
+
+
+/* MAIN HEADING */
+
+.hero-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 62px;
+    line-height: 1.2;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+
+/* GOLDEN HIGHLIGHT */
+
+.hero-content h1 span {
+    color: #e9b957;
+    font-style: italic;
+}
+
+
+/* DESCRIPTION */
+
+.hero-description {
+    font-size: 17px;
+    line-height: 1.9;
+    color: #eeeeee;
+    max-width: 620px;
+    margin-bottom: 35px;
+}
+
+
+/* EXPLORE BUTTON */
+
+.hero-btn {
+    display: inline-block;
+
+    text-decoration: none;
+
+    background-color: #e9b957;
+    color: #17342e;
+
+    padding: 16px 32px;
+
+    border-radius: 35px;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    transition: 0.3s ease;
+}
+
+
+.hero-btn:hover {
+    background-color: white;
+    transform: translateY(-4px);
+}
+
+/* =========================
+   POPULAR DESTINATIONS
+========================= */
+
+.destinations {
+    padding: 100px 8%;
+    background-color: #f8f6ef;
+}
+
+
+/* SECTION HEADING */
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 55px;
+}
+
+.section-tag {
+    color: #b18a43;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+
+.section-heading h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 45px;
+    color: #17342e;
+    margin-bottom: 15px;
+}
+
+.section-heading h2 span {
+    color: #b18a43;
+    font-style: italic;
+}
+
+.section-heading > p:last-child {
+    color: #777;
+    font-size: 16px;
+}
+
+
+/* DESTINATION CONTAINER */
+
+.destination-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+
+/* DESTINATION CARD */
+
+.destination-card {
+    position: relative;
+    height: 380px;
+    border-radius: 18px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.10);
+    transition: 0.4s ease;
+}
+
+.destination-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s ease;
+}
+
+
+/* IMAGE OVERLAY */
+
+.destination-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.85),
+        rgba(0, 0, 0, 0.05)
+    );
+}
+
+
+/* CARD CONTENT */
+
+.destination-info {
+    position: absolute;
+    bottom: 25px;
+    left: 20px;
+    right: 15px;
+    color: white;
+    z-index: 2;
+}
+
+.destination-info p {
+    color: #f2c76b;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.destination-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 27px;
+    margin-bottom: 8px;
+}
+
+.destination-info span {
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+
+/* HOVER EFFECT */
+
+.destination-card:hover {
+    transform: translateY(-10px);
+}
+
+.destination-card:hover img {
+    transform: scale(1.1);
+}
+
+/* =========================
+   ABOUT TERRATALES
+========================= */
+.about {
+    padding: 100px 8%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 70px;
+    background: #ffffff;
+}
+
+.about-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 45px;
+    color: #17342e;
+    margin-bottom: 25px;
+}
+
+.about-content h2 span {
+    color: #b18a43;
+    font-style: italic;
+}
+
+.about-content > p:not(.section-tag) {
+    color: #686868;
+    font-size: 15px;
+    line-height: 1.9;
+    margin-bottom: 18px;
+}
+
+.about-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 14px 25px;
+    background: #173d35;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.about-btn:hover {
+    background: #b18a43;
+}
+
+.about-image img {
+    width: 100%;
+    height: 430px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 15px 15px 0 #e8d8b7;
+}
+
+/* =========================
+   WHY CHOOSE TERRATALES
+========================= */
+.why-us {
+    padding: 100px 8%;
+    background: #f8f6ef;
+}
+
+.features-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.feature-card {
+    background: #ffffff;
+    padding: 40px 30px;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+    transition: 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+.feature-icon {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.feature-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 23px;
+    color: #17342e;
+    margin-bottom: 15px;
+}
+
+.feature-card p {
+    color: #777;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* =========================
+   CONTACT SECTION
+========================= */
+.contact {
+    padding: 100px 8%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: center;
+    background: #ffffff;
+}
+
+.contact-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 43px;
+    color: #17342e;
+    margin: 20px 0;
+}
+
+.contact-content h2 span {
+    color: #b18a43;
+    font-style: italic;
+}
+
+.contact-content > p:not(.section-tag) {
+    color: #777;
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+
+.contact-details p {
+    color: #17342e;
+    margin: 15px 0;
+    font-weight: 600;
+}
+
+.contact-form {
+    background: #f8f6ef;
+    padding: 35px;
+    border-radius: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 18px;
+    border: 1px solid #ddd5c5;
+    border-radius: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    outline: none;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #b18a43;
+}
+
+.contact-form textarea {
+    resize: vertical;
+}
+
+.contact-form button {
+    width: 100%;
+    padding: 15px;
+    background: #173d35;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.contact-form button:hover {
+    background: #b18a43;
+}
+
+#formMessage {
+    margin-top: 15px;
+    color: #173d35;
+}
+
+/* =========================
+   FOOTER
+========================= */
+.footer {
+    background: #10332d;
+    color: #ffffff;
+    padding: 65px 8% 20px;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 50px;
+    padding-bottom: 45px;
+}
+
+.footer-brand h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.footer-brand h2 span {
+    color: #e9b957;
+}
+
+.footer-brand p {
+    color: #d1d9d4;
+    line-height: 1.7;
+    max-width: 300px;
+}
+
+.footer h3 {
+    font-size: 17px;
+    margin-bottom: 20px;
+    color: #e9b957;
+}
+
+.footer-links,
+.footer-social {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer a {
+    color: #d1d9d4;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer a:hover {
+    color: #e9b957;
+    padding-left: 5px;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.2);
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    color: #c4cec8;
+    font-size: 13px;
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+
+/* Tablets */
+@media (max-width: 1024px) {
+
+    .destination-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero-content h1 {
+        font-size: 50px;
+    }
+
+    .about,
+    .contact {
+        gap: 35px;
+    }
+}
+
+/* Mobile Phones */
+@media (max-width: 768px) {
+
+    header {
+        padding: 18px 5%;
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    nav a {
+        font-size: 13px;
+    }
+
+    .hero {
+        min-height: 75vh;
+        padding: 60px 6%;
+    }
+
+    .hero-content h1 {
+        font-size: 38px;
+    }
+
+    .hero-content p {
+        font-size: 14px;
+    }
+
+    .destinations,
+    .about,
+    .why-us,
+    .contact {
+        padding: 65px 6%;
+    }
+
+    .section-heading h2,
+    .about-content h2,
+    .contact-content h2 {
+        font-size: 34px;
+    }
+
+    .destination-container {
+        grid-template-columns: 1fr;
+    }
+
+    .destination-card {
+        height: 350px;
+    }
+
+    .about,
+    .contact {
+        grid-template-columns: 1fr;
+    }
+
+    .about-image img {
+        height: 300px;
+    }
+
+    .features-container {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
+}
+
+/* Small Mobile Phones */
+@media (max-width: 480px) {
+
+    .logo {
+        font-size: 27px;
+    }
+
+    .hero-content h1 {
+        font-size: 32px;
+    }
+
+    .hero-btn {
+        padding: 12px 20px;
+        font-size: 13px;
+    }
+
+    .contact-form {
+        padding: 22px;
+    }
+
+    .destination-card {
+        height: 300px;
+    }
+}
+
+/* =========================
+   MOBILE LAYOUT FIX
+========================= */
+
+@media screen and (max-width: 768px) {
+
+    html, body {
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    /* About Section */
+    .about {
+        display: flex !important;
+        flex-direction: column;
+        gap: 35px;
+        padding: 60px 6%;
+    }
+
+    .about-content,
+    .about-image {
+        width: 100%;
+    }
+
+    .about-image img {
+        width: 100%;
+        height: 280px;
+    }
+
+    /* Contact Section */
+    .contact {
+        display: flex !important;
+        flex-direction: column;
+        gap: 35px;
+        padding: 60px 6%;
+    }
+
+    .contact-content,
+    .contact-form {
+        width: 100%;
+    }
+
+    .contact-form {
+        padding: 25px;
+    }
+
+    .contact-content h2 {
+        font-size: 34px;
+    }
+
+    /* Destination Cards */
+    .destination-container {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Why Choose Us */
+    .features-container {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Footer */
+    .footer-container {
+        display: flex !important;
+        flex-direction: column;
+        gap: 35px;
+    }
+
+    .footer-brand,
+    .footer-links,
+    .footer-social {
+        width: 100%;
+    }
+
+    .footer-bottom {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
+}
+
+/* =========================
+   HAMBURGER MENU
+========================= */
+
+.menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+
+    header {
+        padding: 18px 6%;
+    }
+
+    header nav {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .menu-toggle {
+        display: block;
+        order: 2;
+    }
+
+    .nav-links {
+        display: none;
+        order: 3;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 20px 0;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-btn {
+        display: none;
+        order: 4;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links.active + .nav-btn {
+        display: block;
+    }
+}
+
+/* =========================
+   SCROLL ANIMATIONS
+========================= */
+
+.section-heading,
+.destination-card,
+.about-content,
+.about-image,
+.feature-card,
+.contact-content,
+.contact-form {
+    animation: fadeUp 0.8s ease both;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.destination-card:hover,
+.feature-card:hover {
+    transition: all 0.4s ease;
+}
+
+/* =========================
+   PREMIUM TERRATALES LOGO
+========================= */
+
+.logo a {
+    display: inline-flex;
+    flex-direction: column;
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #ffffff;
+    text-decoration: none;
+    line-height: 1.1;
+}
+
+.logo a span {
+    display: inline;
+    color: #e9b957;
+}
+
+.logo small {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: #e5d6b5;
+    margin-top: 6px;
+}
+
+@media screen and (max-width: 768px) {
+    .logo a {
+        font-size: 29px;
+    }
+
+    .logo small {
+        font-size: 8px;
+    }
+}
+
+/* =========================
+   PREMIUM HERO DESIGN
+========================= */
+
+.hero-content {
+    max-width: 850px;
+}
+
+.hero-tagline {
+    display: inline-block;
+    color: #f2c76b;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    margin-bottom: 25px;
+    padding-left: 55px;
+    position: relative;
+}
+
+.hero-tagline::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 40px;
+    height: 2px;
+    background: #e9b957;
+}
+
+.hero-content h1 {
+    font-size: 66px;
+    line-height: 1.2;
+    max-width: 850px;
+    letter-spacing: -1px;
+}
+
+.hero-content h1 span {
+    color: #e9b957;
+    font-style: italic;
+}
+
+.hero-description {
+    max-width: 600px;
+    line-height: 1.9;
+    font-size: 16px;
+}
+
+.hero-btn {
+    display: inline-block;
+    padding: 16px 30px;
+    border-radius: 4px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+@media screen and (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 38px;
+    }
+
+    .hero-tagline {
+        font-size: 10px;
+        letter-spacing: 2px;
+    }
+}
